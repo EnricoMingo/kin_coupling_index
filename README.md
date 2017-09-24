@@ -1,6 +1,7 @@
 # kin_coupling_index
 
 Prototype of the index to check quality of decoupling between position and orientation tasks.
+Needs the Matlab Robotic Toolbox to run.
 
 ik_index_script.m
 -----------------
