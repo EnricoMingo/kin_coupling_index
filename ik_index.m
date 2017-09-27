@@ -1,4 +1,4 @@
-function [ qdot_v, qdot_v_normalized, orient_indices, orient_index ] = ik_index( robot, q, v )
+function [ qdot_v, qdot_v_normalized, orient_indices, orient_index, r ] = ik_index( robot, q, v )
 % Compute ik_index
 % input:
 %   robot: a robot
@@ -18,8 +18,7 @@ function [ qdot_v, qdot_v_normalized, orient_indices, orient_index ] = ik_index(
 %   qdot_vi_normalized = abs(qdot_vi)/max(abs(qdot_vi));
 %
 
-q;
-J = robot.jacob0(q);
+J = robot.jacob0(q)
 J_rank = rank(J);
 J_pinv = pinv(J);
 
@@ -44,6 +43,11 @@ for i = 1:1:3
 end
 
 orient_index = sum(orient_qdot_v_normalized(length(q)-n+1:1:end,1:1:3))/sum(orient_qdot_v_normalized(1:1:length(q)-n,1:1:3));
+
+%% Here we compute the rank of the sub matrix from the Jacobian
+Jsub = J(4:1:6, 1:1:length(q)-n);
+r = rank(Jsub);
+
 
 end
 

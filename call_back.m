@@ -1,7 +1,7 @@
 function [  ] = call_back(robot, q)
 
 v = [1 1 1 1 1 1]';
-[qdot_v,qdot_v_norm, orient_indices, orient_index] = ik_index(robot, q, v);
+[qdot_v,qdot_v_norm, orient_indices, orient_index, r] = ik_index(robot, q, v);
 
 global h
 if isempty(h)
@@ -32,6 +32,7 @@ xlabel('1:Wx    2:Wy    3:wZ');
 
 
 orient_index
+r
 
 end
 

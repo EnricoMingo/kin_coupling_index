@@ -22,7 +22,7 @@ q_good = [];
 for i = 1:1:tot
     q = a + (b-a).*rand(n,1);
     
-    [ qdot_v, qdot_v_normalized, orient_indices, orient_index ] = ik_index( robot, q', v );
+    [ qdot_v, qdot_v_normalized, orient_indices, orient_index, r ] = ik_index( robot, q', v );
     vec(i) = orient_index;
     
     
